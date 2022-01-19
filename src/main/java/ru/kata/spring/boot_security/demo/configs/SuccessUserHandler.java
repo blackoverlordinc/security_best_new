@@ -1,3 +1,4 @@
+/*
 package ru.kata.spring.boot_security.demo.configs;
 
 import org.springframework.security.core.Authentication;
@@ -22,4 +23,4 @@ public class SuccessUserHandler implements AuthenticationSuccessHandler {
             httpServletResponse.sendRedirect("/");
         }
     }
-}
+}*/
