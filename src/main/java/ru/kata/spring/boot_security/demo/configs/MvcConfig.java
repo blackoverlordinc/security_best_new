@@ -1,4 +1,3 @@
-/*
 package ru.kata.spring.boot_security.demo.configs;
 
 import org.springframework.context.annotation.Configuration;
@@ -11,4 +10,3 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/user").setViewName("user");
     }
 }
-*/
