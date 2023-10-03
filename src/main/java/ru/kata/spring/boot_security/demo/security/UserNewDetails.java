@@ -2,16 +2,16 @@ package ru.kata.spring.boot_security.demo.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ru.kata.spring.boot_security.demo.models.Person;
+import ru.kata.spring.boot_security.demo.models.User;
 
 import java.util.Collection;
 
-public class PersonDetails implements UserDetails {
+public class UserNewDetails implements UserDetails {
 
-    private final Person person;
+    private final User user;
 
-    public PersonDetails(Person person) {
-        this.person = person;
+    public UserNewDetails(User user) {
+        this.user = user;
     }
 
     @Override
@@ -21,12 +21,12 @@ public class PersonDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.person.getPassword();
+        return this.user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.person.getUsername();
+        return this.user.getUsername();
     }
 
     @Override
@@ -48,8 +48,9 @@ public class PersonDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 //для получения ауф данных пользователя
-    public Person getPerson(){
-        return this.person;
+    public User getUser(){
+        return this.user;
     }
 }

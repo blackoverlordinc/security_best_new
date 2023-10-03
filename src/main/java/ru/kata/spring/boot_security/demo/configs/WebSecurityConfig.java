@@ -12,16 +12,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import ru.kata.spring.boot_security.demo.services.PersonDetailsService;
+import ru.kata.spring.boot_security.demo.services.UserNewDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private final PersonDetailsService personDetailsService;
+    private final UserNewDetailsService userNewDetailsService;
     private final SuccessUserHandler successUserHandler;
 
-    public WebSecurityConfig(PersonDetailsService personDetailsService, SuccessUserHandler successUserHandler) {
-        this.personDetailsService = personDetailsService;
+    public WebSecurityConfig(UserNewDetailsService userNewDetailsService, SuccessUserHandler successUserHandler) {
+        this.userNewDetailsService = userNewDetailsService;
         this.successUserHandler = successUserHandler;
     }
 
@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(personDetailsService)
+        auth.userDetailsService(userNewDetailsService)
                 .passwordEncoder(getPasswordEncoder());
     }
     @Bean

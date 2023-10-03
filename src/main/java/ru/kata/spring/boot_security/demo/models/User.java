@@ -6,12 +6,12 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "Person")
-public class Person {
+@Table(name = "users")
+public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @NotEmpty(message = "Имя не должно быть пустым")
     @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной")
@@ -25,19 +25,19 @@ public class Person {
     @Column(name = "password")
     private String password;
 
-    public Person() {
+    public User() {
     }
 
-    public Person(String username, int yearOfBirth) {
+    public User(String username, int yearOfBirth) {
         this.username = username;
         this.yearOfBirth = yearOfBirth;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

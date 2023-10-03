@@ -4,24 +4,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.kata.spring.boot_security.demo.models.Person;
-import ru.kata.spring.boot_security.demo.repositories.PeopleRepository;
+
+import ru.kata.spring.boot_security.demo.models.User;
+
+import ru.kata.spring.boot_security.demo.repositories.UserRepository;
 
 @Service
 public class RegistrationService {
-    private final PeopleRepository peopleRepository;
+    private final UserRepository peopleRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public RegistrationService(PeopleRepository peopleRepository, PasswordEncoder passwordEncoder) {
-        this.peopleRepository = peopleRepository;
+    public RegistrationService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.peopleRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Transactional
-    public void register(Person person){
-        String encodedPassword = passwordEncoder.encode(person.getPassword());
-        person.setPassword(encodedPassword);
-        peopleRepository.save(person);
+    public void register(User user){
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+        peopleRepository.save(user);
     }
 }
